@@ -1,6 +1,6 @@
 function login() {
-    let username = $("#username").val()
-    let password = $("#password").val()
+    let username = $("#your_name").val()
+    let password = $("#your_pass").val()
 
     let user = {
         username: username,
@@ -15,12 +15,12 @@ function login() {
         url: "http://localhost:8080/api/auth/login",
         type: "POST",
         data: JSON.stringify(user),
-        success: function (data){
+        success: function (data) {
             sessionStorage.setItem("token", data.token)
-            findAll()
+            sessionStorage.setItem("userLogging", data.id)
             $("#username").val("")
             $("#password").val("")
-
+            findAllFood()
             let content = `<span>${data.name}</span> | <button class="btn btn-danger" onclick="logout()">Log out</button>`
             $("#header-auth").html(content)
         },
@@ -41,20 +41,21 @@ function logout() {
 }
 
 function registerForm() {
-    $("#modal-auth").html("Register")
-    $("#btn-auth").html("Sign up").attr("onclick", "register()")
+    document.getElementById("register").style.display = "block"
+    document.getElementById("register").style.display = "block"
 }
-function register() {
-    let username = $("#username").val()
-    let password = $("#password").val()
 
+function register() {
+    let username = $("#name_register").val()
+    let password = $("#pass").val()
+    let idRole = $("#role").val();
 
     let user = {
         username: username,
         password: password,
         roles: [
             {
-                id: 2
+                id: idRole
             }
         ]
     }
@@ -67,12 +68,16 @@ function register() {
         url: "http://localhost:8080/api/auth/register",
         type: "POST",
         data: JSON.stringify(user),
-        success: function (data){
+        success: function (data) {
             $("#username").val("")
             $("#password").val("")
-            $("#modal-auth").html("Login")
-            $("#btn-auth").html("Sign in").attr("onclick", "login()")
+            displayFormLogin()
             alert("Register successfully!")
         }
     })
+}
+
+function displayFormLogin() {
+    document.getElementById("login").style.display = "block"
+    document.getElementById("register").style.display = "none"
 }

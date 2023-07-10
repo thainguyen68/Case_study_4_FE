@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Category-Home</title>
+  <script src="../jquery-3.7.0.min.js"></script>
+  <script src="../service/category.js"></script>
+</head>
+<body onload="findAllCategory()">
+<h1 style="text-align: center">Category Home</h1>
+<div><a href="http://localhost:63343/food_web_FE/view/home.html?_ijt=l9l3g4jh232vuvgqsdrvpd5lju&_ij_reload=RELOAD_ON_SAVE">
+  home
+</a></div>
+<div id="list_category"></div>
+
+<div id="create_category">
+  <h1>Create form category</h1>
+  <table>
+    <tr>
+      <td><label for="name-c">Name</label></td>
+      <td><input type="text" id="name-c"></td>
+    </tr>
+    <tr>
+      <td><button onclick="createCategory()">Create</button></td>
+    </tr>
+  </table>
+</div>
+<div id="update_category">
+  <h1>Update form category</h1>
+  <table>
+    <tr>
+      <td><label for="name-u">Name</label></td>
+      <td><input type="text" id="name-u"></td>
+    </tr>
+    <tr>
+      <td><button onclick="updateCategory()" >Update</button></td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>
