@@ -63,6 +63,7 @@ function getFormDataBill() {
     let user =  sessionStorage.getItem("userLogging");
     let userId =  parseInt(user)
 
+
     let bill = {
         user: { id: userId}
     }

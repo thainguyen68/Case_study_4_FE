@@ -153,6 +153,8 @@ function displayAllFood(value){
     document.getElementById("list_food").style.display = "block"
     document.getElementById("create").style.display = "none"
     document.getElementById("update").style.display = "none"
+    document.getElementById("formLogin").style.display = "none"
+    document.getElementById("formRegister").style.display = "none"
 }
 
 

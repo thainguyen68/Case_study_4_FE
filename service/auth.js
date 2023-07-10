@@ -21,7 +21,7 @@ function login() {
             $("#username").val("")
             $("#password").val("")
             findAllFood()
-            let content = `<span>${data.name}</span> | <button class="btn btn-danger" onclick="logout()">Log out</button>`
+            let content = `<span><i class="fa-regular fa-user" style="font-size: 15px;"></i>${data.name}</span> | <button class="btn btn-danger" onclick="logout()">Log out</button>`
             $("#header-auth").html(content)
         },
         error: function () {
@@ -29,7 +29,7 @@ function login() {
         }
     })
 }
-
+//  <span id="outAcc" style="display: block"><i class="fa-regular fa-user" style="font-size: 15.5px;"></i></span>
 function logout() {
     sessionStorage.clear()
     let content = `<button class="btn btn-primary" data-bs-toggle="modal"
@@ -40,9 +40,11 @@ function logout() {
     $("#header-auth").html(content)
 }
 
-function registerForm() {
-    document.getElementById("register").style.display = "block"
-    document.getElementById("register").style.display = "block"
+function displayRegisterForm() {
+    document.getElementById("formLogin").style.display = "none"
+    document.getElementById("list_food").style.display = "none"
+    document.getElementById("page_control").style.display = "none"
+    document.getElementById("formRegister").style.display = "block"
 }
 
 function register() {
@@ -78,6 +80,8 @@ function register() {
 }
 
 function displayFormLogin() {
-    document.getElementById("login").style.display = "block"
-    document.getElementById("register").style.display = "none"
+    document.getElementById("formLogin").style.display = "block"
+    document.getElementById("list_food").style.display = "none"
+    document.getElementById("page_control").style.display = "none"
+    document.getElementById("formRegister").style.display = "none"
 }

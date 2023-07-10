@@ -1,8 +1,9 @@
 .container_box {
     display: flex;
-    max-width: 1200px;
+    max-width: 1313px;
     flex-wrap: wrap;
     margin: 15px 0;
+    justify-content: center;
 }
 
 .container_inner {
@@ -44,4 +45,147 @@
 
 .container_inner-user {
 
+}
+
+
+
+
+/* CSS styles */
+ body {
+     font-family: Arial, sans-serif;
+     margin: 0;
+     padding: 0;
+     min-height: 765px;
+ }
+
+/* Header styles */
+header {
+    background-color: #f44336;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Main content styles */
+.container1 {
+    /*max-width: 800px;*/
+    margin: 0 auto;
+    padding: 135px 20px 20px 20px;
+}
+
+
+/* Product card styles */
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.product-image {
+    flex: 0 0 120px;
+    margin-right: 10px;
+}
+
+.product-image img {
+    width: 100%;
+    height: auto;
+}
+
+.product-details {
+    flex-grow: 1;
+}
+
+.product-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.product-price {
+    color: #f44336;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.product-description {
+    margin-bottom: 5px;
+}
+
+/* Search bar styles */
+.search-container {
+    margin-bottom: 20px;
+}
+
+.search-input {
+    padding: 5px;
+    width: 200px;
+    border-radius: 5px;
+}
+
+.search-button {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Filter styles */
+.filter-container {
+    margin-bottom: 20px;
+}
+
+.filter-select {
+    padding: 5px;
+    width: 150px;
+    border-radius: 5px;
+}
+
+/* Menu styles */
+nav {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+/* Footer styles */
+footer {
+    background-color: #f44336;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin-top: 85px;}
+
+/* Login and registration styles */
+.auth-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.auth-input {
+    padding: 5px;
+    width: 150px;
+    border-radius: 5px;
+}
+
+.auth-button {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
