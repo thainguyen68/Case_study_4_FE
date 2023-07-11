@@ -144,8 +144,8 @@ function displayAllFood(value){
             content +=` <p class="container_inner-category">${value[i].quantity} </p>`
             content += `<p class="container_inner-category">Category : ${value[i].category.name}</p>`
             content += `<p class="container_inner-user">User : ${value[i].user.username}</p>`
-            content += ` <button class="btn btn-danger"
-                            onclick="createBill(${value[i].id})">Buy</button>                 
+            content += ` <div class="container_inner-buy"><button class="btn btn-danger"
+                            onclick="createBill(${value[i].id})">Buy</button></div>                
             </div>`
     }
     content += `</div>`

@@ -47,6 +47,71 @@
 
 }
 
+.container_inner-buy{
+    display: flex;
+    justify-content: flex-end;
+}
+.container_inner-buy > button {
+    margin-right: 5px;
+}
+
+
+
+.container_Bill{}
+.container_Bill_inner{}
+.container_Bill_inner-title{
+    display: flex;
+    justify-content: center;
+
+}
+.container_Bill_inner-title-food{
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid gray;
+
+}
+.container_Bill_inner-title-food1{
+    margin-left: 335px;
+}
+.container_Bill_id{
+    margin: 5px;
+}
+.container_Bill_status{
+    margin: 5px;
+
+}
+.container_Bill_buyer{
+    margin: 5px;
+
+}
+.container_Bill_food{
+
+}
+.container_Bill_food-inner{
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 1px solid gray;
+}
+.container_Bill_food-img{
+    width: 150px;
+    height: 150px;
+}
+.container_Bill_food-name{}
+.container_Bill_food-price{}
+.container_Bill_food-quantity{}
+.container_Bill_btn{
+    text-align: end;
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -55,7 +120,7 @@
      font-family: Arial, sans-serif;
      margin: 0;
      padding: 0;
-     min-height: 765px;
+     /*min-height: 765px;*/
  }
 
 /* Header styles */
@@ -173,6 +238,7 @@ footer {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+    align-items: center;
 }
 
 .auth-input {
@@ -188,4 +254,19 @@ footer {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.login-container{
+    margin-top: 50px;
+    text-align: center;
+    justify-content: center;
+}
+
+.login-container > div {
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.container_inner-acc{
+
 }

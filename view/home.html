@@ -35,7 +35,7 @@
             <div>
                 <button class="auth-button" onclick="displayFormLogin()">Login</button>
             </div>
-            |
+            <span style="display: block; border-right: 5px solid white"></span>
             <div>
                 <button class="auth-button" onclick="displayRegisterForm()">Register</button>
             </div>
@@ -53,11 +53,11 @@
 </div>
 
 
-<div class="container1" >
-<!--    <div class="search-container">-->
-<!--        <input type="text" id="search" class="search-input" name="search" placeholder="Search...">-->
-<!--        <button onclick="searchFoodByName()" class="search-button">Search</button>-->
-<!--    </div>-->
+<div class="container1">
+    <!--    <div class="search-container">-->
+    <!--        <input type="text" id="search" class="search-input" name="search" placeholder="Search...">-->
+    <!--        <button onclick="searchFoodByName()" class="search-button">Search</button>-->
+    <!--    </div>-->
 
     <div class="col-lg-6" style="display: flex; margin: auto">
         <input type="number" id="min" placeholder="min-price" style="width: 100px; margin-left: 5px">
@@ -138,6 +138,7 @@
     <!--form category-->
     <div></div>
 
+
     <!--form bill-->
     <div>
         <div id="bill"></div>
@@ -153,7 +154,9 @@
     <div>
         <input type="password" class="auth-input" placeholder="Password" id="your_pass">
     </div>
-    <button class="auth-button" onclick="login()">Login</button>
+    <div>
+        <button class="auth-button" onclick="login()">Login</button>
+    </div>
 </div>
 
 <div class="login-container" id="formRegister">
@@ -169,7 +172,9 @@
             <option value="2">Customer</option>
         </select>
     </div>
-    <button class="auth-button" onclick="register()">Register</button>
+    <div>
+        <button class="auth-button" onclick="register()">Register</button>
+    </div>
 </div>
 <footer>
     <p>&copy; 2023 Order Food. All rights reserved.</p>

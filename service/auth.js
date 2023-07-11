@@ -21,7 +21,7 @@ function login() {
             $("#username").val("")
             $("#password").val("")
             findAllFood()
-            let content = `<span><i class="fa-regular fa-user" style="font-size: 15px;"></i>${data.name}</span> | <button class="btn btn-danger" onclick="logout()">Log out</button>`
+            let content = `<span class="container_inner-acc"><i class="fa-regular fa-user" style="font-size: 15px;"></i>${data.name}</span> | <button class="btn btn-danger" onclick="logout()">Log out</button>`
             $("#header-auth").html(content)
         },
         error: function () {
@@ -32,11 +32,15 @@ function login() {
 //  <span id="outAcc" style="display: block"><i class="fa-regular fa-user" style="font-size: 15.5px;"></i></span>
 function logout() {
     sessionStorage.clear()
-    let content = `<button class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#auth">Sign in</button>
-            |
-            <button class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#auth">Sign up</button>`
+
+    let content = `<div>
+                <button class="auth-button" onclick="displayFormLogin()">Login</button>
+            </div>
+            <span style="display: block; border-right: 5px solid white"></span>
+            <div>
+                <button class="auth-button" onclick="displayRegisterForm()">Register</button>
+            </div>`
+
     $("#header-auth").html(content)
 }
 
@@ -44,6 +48,7 @@ function displayRegisterForm() {
     document.getElementById("formLogin").style.display = "none"
     document.getElementById("list_food").style.display = "none"
     document.getElementById("page_control").style.display = "none"
+    document.getElementById("bill").style.display = "none"
     document.getElementById("formRegister").style.display = "block"
 }
 
@@ -80,8 +85,10 @@ function register() {
 }
 
 function displayFormLogin() {
-    document.getElementById("formLogin").style.display = "block"
+    document.getElementById("formLogin").style.display = "flex"
     document.getElementById("list_food").style.display = "none"
     document.getElementById("page_control").style.display = "none"
     document.getElementById("formRegister").style.display = "none"
+    document.getElementById("bill").style.display = "none"
+
 }

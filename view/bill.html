@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <style>
+    .cart-container {
+      margin-bottom: 20px;
+      background-color: #f9f9f9;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .cart-item-image {
+      flex: 0 0 50px;
+      margin-right: 10px;
+    }
+
+    .cart-item-image img {
+      width: 100%;
+      height: auto;
+    }
+
+    .cart-item-details {
+      flex-grow: 1;
+    }
+
+    .cart-item-title {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .cart-item-price {
+      color: #f44336;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .cart-summary {
+      text-align: right;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+<div class="cart-container">
+  <h2>Giỏ hàng</h2>
+  <div class="cart-item">
+    <div class="cart-item-image">
+      <img src="path/to/product1.jpg" alt="Product 1">
+    </div>
+    <div class="cart-item-details">
+      <h3 class="cart-item-title">Product 1</h3>
+      <p class="cart-item-price">$10</p>
+    </div>
+  </div>
+
+  <div class="cart-summary">
+    <p>Tổng số lượng: 2</p>
+    <p>Tổng giá trị: $25</p>
+  </div>
+</div>
+</body>
+</html>
