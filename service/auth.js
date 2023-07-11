@@ -21,7 +21,7 @@ function login() {
             $("#username").val("")
             $("#password").val("")
             findAllFood()
-            let content = `<span class="container_inner-acc"><i class="fa-regular fa-user" style="font-size: 15px;"></i>${data.name}</span> | <button class="btn btn-danger" onclick="logout()">Log out</button>`
+            let content = `<span class="container_inner-acc"><i class="fa-regular fa-user" style="font-size: 15px; margin-right: 4px"></i>${data.name}</span> <button class="btn-logout" onclick="logout()">Log out</button>`
             $("#header-auth").html(content)
         },
         error: function () {
@@ -33,13 +33,16 @@ function login() {
 function logout() {
     sessionStorage.clear()
 
-    let content = `<div>
-                <button class="auth-button" onclick="displayFormLogin()">Login</button>
-            </div>
-            <span style="display: block; border-right: 5px solid white"></span>
-            <div>
-                <button class="auth-button" onclick="displayRegisterForm()">Register</button>
-            </div>`
+   findAllFood()
+    let content = `
+                <div class="auth-button-container">
+                                <button class="auth-button"  data-bs-toggle="modal" data-bs-target="#login" >Login</button>
+                            </div>
+                            <span style="display: block; border-right: 5px solid white"></span>
+                            <div  class="auth-button-container">
+                                <button class="auth-button" data-bs-toggle="modal" data-bs-target="#register">Register</button>
+                            </div>
+                </div>`
 
     $("#header-auth").html(content)
 }
@@ -54,7 +57,7 @@ function displayRegisterForm() {
 
 function register() {
     let username = $("#name_register").val()
-    let password = $("#pass").val()
+    let password = $("#pass_register").val()
     let idRole = $("#role").val();
 
     let user = {
@@ -78,8 +81,10 @@ function register() {
         success: function (data) {
             $("#username").val("")
             $("#password").val("")
-            displayFormLogin()
             alert("Register successfully!")
+        },
+        error: function () {
+            alert("Register fail!")
         }
     })
 }

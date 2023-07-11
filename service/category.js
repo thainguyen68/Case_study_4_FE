@@ -11,16 +11,21 @@ function findAllCategory() {
     })
 }
 function displayTableCategory(value){
-    let content = `<button onclick="displayFormCreateCategory()">Add new category</button>
-                        <table border="1"> 
-                        <tr><th>ID</th>
-                        <th>Name</th>
-                        <th>Action</th></tr>`
+    let content = `
+                     <div style="margin-top: 5%; margin-left: 11.2%; margin-bottom: 1%;">
+                        <button class="btn btn-primary" style="text-decoration: none; color: white" onclick="displayFormCreateCategory()">Add new category</button>
+                       </div>
+                        <table style=" width: 500px;margin: auto" 
+                        class="table table-hover"> 
+                        <tr><th style="width: 40%">ID</th>
+                        <th style="width: 40%">Name</th>
+                        <th style="width: 20%">Action</th></tr>`
     for (let i = 0; i < value.length; i++) {
         content += `<tr>
                     <th>${value[i].id}</th>
                     <th>${value[i].name}</th>
-                    <th><button onclick="displayFormUpdateCategory(${value[i].id})">Update</button></th>
+                    <th><button class="btn btn-warning" 
+                        data-bs-toggle="modal" data-bs-target="#category" onclick="displayFormUpdateCategory(${value[i].id})">Update</button></th>
                     </tr>
                    `
     }
@@ -29,6 +34,14 @@ function displayTableCategory(value){
     document.getElementById("list_category").style.display = "block"
     document.getElementById("create_category").style.display = "none"
     document.getElementById("update_category").style.display = "none"
+    document.getElementById("list_food").style.display = "none"
+    document.getElementById("login").style.display = "none"
+    document.getElementById("register").style.display = "none"
+    document.getElementById("create").style.display = "none"
+    document.getElementById("update").style.display = "none"
+    document.getElementById("bill").style.display = "none"
+    document.getElementById("page_control").style.display = "none"
+
 }
 function createCategory() {
     let name = $("#name-c").val()
@@ -54,6 +67,14 @@ function createCategory() {
 function displayFormCreateCategory(){
     document.getElementById("create_category").style.display = "block"
     document.getElementById("list_category").style.display = "none"
+    document.getElementById("register").style.display = "none"
+    document.getElementById("create").style.display = "none"
+    document.getElementById("update").style.display = "none"
+    document.getElementById("bill").style.display = "none"
+    document.getElementById("login").style.display = "none"
+    document.getElementById("page_control").style.display = "none"
+
+
 }
 let categoryIdUpdate
 function displayFormUpdateCategory(id) {
@@ -65,13 +86,22 @@ function displayFormUpdateCategory(id) {
             $("#name-u").val(category.name)
             console.log(category.name)
             document.getElementById("update_category").style.display = "block"
+            document.getElementById("create").style.display = "none"
+            document.getElementById("register").style.display = "none"
+            document.getElementById("update").style.display = "none"
+            document.getElementById("bill").style.display = "none"
+            document.getElementById("login").style.display = "none"
             document.getElementById("list_category").style.display = "none"
+            document.getElementById("page_control").style.display = "none"
+
+
+
         }
     })
 }
 
 function updateCategory() {
-    let name = $("#name-u").val()
+    let name = $("#name-u-c").val()
     let category = {
         name: name
     }

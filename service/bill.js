@@ -41,17 +41,32 @@ function displayAllBill(value) {
                 contentBill += `<img class="container_Bill_food-img" src="${value[i].food[j].imagePath}">`
                 contentBill += `<div class="container_Bill_food-name">${value[i].food[j].name}</div>`
                 contentBill += `<div class="container_Bill_food-price">${value[i].food[j].price}</div>`
-                contentBill += `<div class="container_Bill_food-quantity">${value[i].food[j].quantityBuy}</div>`
+                contentBill += `<div class="container_Bill_food-price">${value[i].food[j].quantity}</div>`
                 contentBill += `</div>`
             }
             contentBill += `</div>`
+
+
+            // contentBill += `<div class="container_Bill_food-quantity" >`
+            // for (let j = 0; j < value[i].bill_food.length; j++) {
+            //     contentBill += `<div class="container_Bill_food-price">${value[i].bill_food[j].quantity}</div>`
+            // }
+            // contentBill += `</div>`
+
             contentBill += `<div class="container_Bill_btn"><button>Edit-quantity</button>
                             <button>Pay</button></div>`
         }
     }
     contentBill += `</div>`
     document.getElementById("bill").innerHTML = contentBill
+    document.getElementById("page_control").style.display ="none"
+    document.getElementById("list_food").style.display ="none"
     document.getElementById("bill").style.display ="block"
+    document.getElementById("list_category").style.display = "none"
+    document.getElementById("formLogin").style.display ="none"
+    document.getElementById("formRegister").style.display ="none"
+    document.getElementById("create_category").style.display = "none"
+    document.getElementById("update_category").style.display = "none"
 }
 
 let idFood;
@@ -75,12 +90,12 @@ function createBill(id){
 }
 
 function getFormDataBill() {
-    let user =  sessionStorage.getItem("userLogging");
-    let userId =  parseInt(user)
+    let userNow =  sessionStorage.getItem("userLogging");
+    let userId =  parseInt(userNow)
 
 
-    let bill = {
-        user: { id: userId}
+    let user = {
+        id: userId
     }
 
     let food = {
@@ -88,7 +103,7 @@ function getFormDataBill() {
     }
 
     let formBill = new FormData()
-    formBill.append("bill", new Blob([JSON.stringify(bill)], {type: "application/json"}))
+    formBill.append("user", new Blob([JSON.stringify(user)], {type: "application/json"}))
     formBill.append("food1", new Blob([JSON.stringify(food)], {type: "application/json"}))
     return formBill;
 }

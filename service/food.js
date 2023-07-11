@@ -134,27 +134,63 @@ function clearFilter() {
 
 
 function displayAllFood(value){
-    let content = `<div class="container_box">`
+    let content = `<div class="grid__row">`
         for (let i = 0; i < value.length; i++) {
-        content += `<div class="container_inner">`
+        content += `<div class="grid__column-2-4">`
+            content += `<div class="home-product-item">`
             // content += `<div class="">${value[i].id}</div>`
-            content +=  `<img  onclick="detailFood(${value[i].id})" class="container_inner-img" src="${value[i].imagePath}" alt="empty">`
-            content +=  `<h3 class="container_inner-name">${value[i].name}</h3>`
-            content +=` <span class="container_inner-price">${value[i].price} VND</span>`
-            content +=` <p class="container_inner-category">${value[i].quantity} </p>`
-            content += `<p class="container_inner-category">Category : ${value[i].category.name}</p>`
-            content += `<p class="container_inner-user">User : ${value[i].user.username}</p>`
-            content += ` <div class="container_inner-buy"><button class="btn btn-danger"
-                            onclick="createBill(${value[i].id})">Buy</button></div>                
-            </div>`
+            content +=  `<div class="home-product-item__image"><img  onclick="detailFood(${value[i].id})" class="container_inner-img" src="${value[i].imagePath}" alt="empty"></div>`
+            content +=  `<h3 class="home-product-item__name">${value[i].name}</h3>`
+            content +=`<div class="home-product-item__price">`
+            // content +=` <span class="home-product-item__price-old">₫ ${value[i].price}</span>`
+            content +=` <span class="home-product-item__price-current">₫ ${value[i].price}</span>`
+            content += `</div>`
+
+            content +=` <p class="container_inner-category">Số lượng : ${value[i].quantity} </p>`
+            content += `<div class="home-product-item__action">
+                                            <span class="home-product-item__like home-product-item__like--liked">
+                                                <i class="home-product-item__like-icon-empty far fa-heart"></i>
+                                                <i class="home-product-item__like-icon-fill fas fa-heart"></i>
+                                            </span>
+                                        <div class="home-product-item__star">
+                                            <i class="home-product-item__star--gold fas fa-star"></i>
+                                            <i class="home-product-item__star--gold fas fa-star"></i>
+                                            <i class="home-product-item__star--gold fas fa-star"></i>
+                                            <i class="home-product-item__star--gold fas fa-star"></i>
+                                            <i class="home-product-item__star--gold fas fa-star"></i>
+                                        </div>
+                                        <span class="home-product-item__sold">
+                                                Đã bán 689
+                                            </span>
+                                    </div>`
+
+            content += `<div class="home-product-item__origin">
+                                        <span class="home-product-item__brand"> ${value[i].category.name}</span>
+                                        <span class="home-product-item__origin-name">${value[i].user.username}</span>
+                                    </div>`
+            content += `<div class="home-product-item__favourite">
+                                        <i class="fas fa-check"></i>
+                                        <span>Yêu thích</span>
+                                    </div>`
+            content += ` <div class="home-product-item__sale-off">
+                                        <span class="home-product-item__sale-off-percent">10%</span>
+                                        <span class="home-product-item__sale-off-label">Giảm</span>
+                                    </div>`
+            content += ` <div class="home-product-item__origin" style="display: flex;justify-content: end"><button class="btn btn-danger"
+                            onclick="createBill(${value[i].id})">Buy</button></div> `
+             content += `</div>`
+             content += `</div>`
     }
     content += `</div>`
     document.getElementById("list_food").innerHTML = content
     document.getElementById("list_food").style.display = "block"
     document.getElementById("create").style.display = "none"
     document.getElementById("update").style.display = "none"
-    document.getElementById("formLogin").style.display = "none"
-    document.getElementById("formRegister").style.display = "none"
+    document.getElementById("bill").style.display = "none"
+    document.getElementById("create_category").style.display = "none"
+    document.getElementById("update_category").style.display = "none"
+    document.getElementById("list_category").style.display = "none"
+
 }
 
 
@@ -166,28 +202,67 @@ function detailFood(id) {
         url: `http://localhost:8080/api/foods/${id}`,
         type: "GET",
         success: function (data) {
-            let content = `<div class="row">
-                                    <div class="container_inner">
-                                        <img class="container_inner-img" onclick="detailFood(${data.id})" 
-                                            src="${data.imagePath}" alt="">
-                                        <h3 class="container_inner-name">${data.name}</h3>
-                                        <span class="container_inner-price">${data.price}</span>
-                                        <p class="container_inner-category">${data.quantity}</p>
-                                        
-                                        <p class="container_inner-category">Category : ${data.category.name}</p>
-                                        <p class="container_inner-user">User : ${data.user.username}</p>
-                                        <button class="btn btn-warning" 
+            let content = `<div class="grid__row-views">`
+            content += `<div class="grid__column-2-4" >`
+            content += `<div class="home-product-item">`
+            // content += \`<div class="">${value[i].id}</div>`
+            content += `<div class="home-product-item__image"><img  onclick="detailFood(${data.id})" class="container_inner-img" src="${data.imagePath}" alt="empty"></div>`
+            content +=  `<h3 class="home-product-item__name">${data.name}</h3>`
+            content +=`<div class="home-product-item__price">`
+            // content +=` <span class="home-product-item__price-old">₫ ${data.price}</span>`
+            content +=` <span class="home-product-item__price-current">₫ ${data.price}</span>`
+            content += `</div>`
+
+            content +=` <p class="container_inner-category">Số lượng : ${data.quantity} </p>`
+            content += `<div class ="home-product-item__action">`
+                               content +=  `<span class="home-product-item__like home-product-item__like--liked">`
+                                               content += `<i class="home-product-item__like-icon-empty far fa-heart"></i>`
+                                               content +=`<i class="home-product-item__like-icon-fill fas fa-heart"></i>`
+                               content += `</span>`
+
+                    content +=   `<div class="home-product-item__star">
+                                            <i class="home-product-item__star--gold fas fa-star"></i>
+                                            <i class="home-product-item__star--gold fas fa-star"></i>
+                                            <i class="home-product-item__star--gold fas fa-star"></i>
+                                            <i class="home-product-item__star--gold fas fa-star"></i>
+                                            <i class="home-product-item__star--gold fas fa-star"></i>
+                                  </div>`
+
+            content +=    `<span class="home-product-item__sold">Đã bán 689 </span>`
+            content +=  `</div>`
+
+            content += `<div class="home-product-item__origin">
+                                        <span class="home-product-item__brand"> ${data.category.name}</span>
+                                        <span class="home-product-item__origin-name">${data.user.username}</span>
+                                    </div>`
+            content += `<div class="home-product-item__favourite">
+                                        <i class="fas fa-check"></i>
+                                        <span>Yêu thích</span>
+                                    </div>`
+            content += ` <div class="home-product-item__sale-off">
+                                        <span class="home-product-item__sale-off-percent">10%</span>
+                                        <span class="home-product-item__sale-off-label">Giảm</span>
+                                    </div>`
+             content += `</div>`
+             content += `</div>`
+
+            content += `<div class=" grid__column-2-4" style="margin: auto">`
+            content += `<button class="btn btn-warning" 
                                             onclick="displayFormUpdate(${data.id})">Update</button>
-                                        <button class="btn btn-danger"
+                                        <button class="btn btn-danger" style="max-width: 50px"
                                             onclick="deleteFood(${data.id})">Delete</button>
-                   
-                                        <button  class="btn btn-warning" 
-                                            onclick="findAllFood()">Back to home</button>
-                                    </div>
-                                    <div class="col-lg-9">Description /....</div>
+                                    </div>       
                                  </div>`
+            content += `</div>`
+
             $("#list_food").html(content)
             $("#page_control").css("display", "none")
+            document.getElementById("create_category").style.display = "none"
+            document.getElementById("update_category").style.display = "none"
+            document.getElementById("list_category").style.display = "none"
+            document.getElementById("create").style.display = "none"
+            document.getElementById("update").style.display = "none"
+            document.getElementById("bill").style.display = "none"
         }
     })
 }
@@ -240,6 +315,11 @@ function displayFormCreate(){
     document.getElementById("list_food").style.display = "none"
     document.getElementById("update").style.display = "none"
     document.getElementById("page_control").style.display = "none"
+    document.getElementById("bill").style.display = "none"
+    document.getElementById("create_category").style.display = "none"
+    document.getElementById("update_category").style.display = "none"
+    document.getElementById("list_category").style.display = "none"
+
 }
 
 
@@ -284,6 +364,11 @@ function displayFormUpdate(id){
     document.getElementById("create").style.display = "none"
     document.getElementById("list_food").style.display = "none"
     document.getElementById("page_control").style.display = "none"
+    document.getElementById("bill").style.display = "none"
+    document.getElementById("create_category").style.display = "none"
+    document.getElementById("update_category").style.display = "none"
+    document.getElementById("list_category").style.display = "none"
+
 }
 
 function updateFood() {
@@ -364,7 +449,7 @@ function getFormDataUpdate() {
     let loggingUser = sessionStorage.getItem("userLogging");
     let userId =  parseInt(loggingUser)
     let categoryId = $("#category-id-update").val()
-    let image = $("#image")[0].files[0]
+    let image = $("#image-u")[0].files[0]
 
     let food = {
         name: name,
@@ -397,13 +482,13 @@ function getFormDataUpdate() {
 //thay đổi phương thức chuyển trang dựa vào action
 function displayPageControl(action, page) {
     let data =
-        `<a href="#list" class="btn btn-info" id="prev" 
-                onclick="${action}(${page.number} - 1)">Prev</a>
-        <span>${page.number + 1}</span> | 
-        <span>${page.totalPages}</span>
-        <a href="#list" class="btn btn-info" id="next" 
-                onclick="${action}(${page.number} + 1)">Next</a>`
-    $("#page_control").html(data).css("display", "block")
+        `<a href="#header" class="pagination-item__link" id="prev" 
+                onclick="${action}(${page.number} - 1)"> <i class="pagination-item__icon fas fa-chevron-left"></i></a>
+        <span class="pagination-item__link">${page.number + 1}</span> | 
+        <span class="pagination-item__link">${page.totalPages}</span>
+        <a href="#header" class="pagination-item__link" id="next" 
+                onclick="${action}(${page.number} + 1)"> <i class="pagination-item__icon fas fa-chevron-right"></i></a>`
+    $("#page_control").html(data).css("display", "flex")
     if (page.first) {
         $("#prev").css("display", "none")
     } else if (page.last) {
