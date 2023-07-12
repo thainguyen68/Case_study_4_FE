@@ -1,56 +1,85 @@
 
-.container_Bill{}
-.container_Bill_inner{}
-.container_Bill_inner-title{
-    display: flex;
-    justify-content: center;
-
+.container_Bill {
 }
-.container_Bill_inner-title-food{
+
+.container_Bill_inner {
+}
+
+.container_Bill_inner-title {
+    display: flex;
+    justify-content: space-around;
+    font-weight: 400;
+    font-size: 15px;
+    margin-bottom:25px ;
+}
+
+.container_Bill_inner-title-food {
     display: flex;
     justify-content: space-around;
     border-bottom: 1px solid gray;
+    font-weight: 400;
+    font-size: 14px;
 
 }
-.container_Bill_inner-title-food1{
-    margin-left: 335px;
+
+.container_Bill_inner-title-food1 {
+    margin-left: 366px;
 }
-.container_Bill_id{
+.container_Bill_inner-title-food2{
+
+}
+
+.container_Bill_id {
     margin: 5px;
 }
-.container_Bill_status{
+
+.container_Bill_status {
     margin: 5px;
 
 }
-.container_Bill_buyer{
+
+.container_Bill_buyer {
     margin: 5px;
+}
+.container_Bill_total{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.container_Bill_food {
 
 }
-.container_Bill_food{
 
-}
-.container_Bill_food-inner{
+.container_Bill_food-inner {
     display: flex;
     margin-bottom: 20px;
     align-items: center;
     justify-content: space-around;
     border-bottom: 1px solid gray;
 }
-.container_Bill_food-img{
+
+.container_Bill_food-img {
     width: 150px;
     height: 150px;
 }
-.container_Bill_food-name{}
-.container_Bill_food-price{}
-.container_Bill_food-quantity{}
-.container_Bill_btn{
-    text-align: end;
+
+.container_Bill_food-name {
 }
 
+.container_Bill_food-price {
+}
 
+.container_Bill_food-quantity {
+}
 
+.container_Bill_btn {
+    text-align: end;
 
-
+}
+.container_Bill_btn > button:last-child {
+    color: var(--white-color);
+    background-color: var(--primary-color);
+}
 
 
 .auth-container {
@@ -73,12 +102,13 @@
     border-radius: 5px;
 }
 
-.auth-button-container :hover > .auth-button{
+.auth-button-container :hover > .auth-button {
     cursor: pointer;
     background-color: #198619;
 
 }
-.login-container{
+
+.login-container {
     margin-top: 50px;
     text-align: center;
     justify-content: center;
@@ -99,7 +129,8 @@
     right: 61px;
     top: 20%;
 }
-.btn-logout{
+
+.btn-logout {
     border: none;
     background-color: #d5654f;
     color: white;
@@ -110,7 +141,7 @@
 
 }
 
-.btn-logout:hover{
+.btn-logout:hover {
     border: none;
     background-color: #101010;
     color: #ffffff;

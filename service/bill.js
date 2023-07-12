@@ -23,15 +23,15 @@ function displayAllBill(value) {
         if (value[i].user.id === loggingUserNow && value[i].status === false) {
             contentBill += `<div class="container_Bill_inner" style="margin-top: 80px">`
             contentBill += `<div class="container_Bill_inner-title">`
-            contentBill += `<div class="container_Bill_id">Code Bill: ${value[i].id}</div>`
-            contentBill += `<div class="container_Bill_status">Status Bill: ${value[i].status}</div>`
-            contentBill += `<div class="container_Bill_buyer">Buyer: ${value[i].user.username}</div>`
+            contentBill += `<div class="container_Bill_id">Mã đơn hàng : ${value[i].id}</div>`
+            contentBill += `<div class="container_Bill_status">Trạng thái: ${value[i].status}</div>`
+            contentBill += `<div class="container_Bill_buyer">Người mua: ${value[i].user.username}</div>`
             contentBill += `</div>`
 
             contentBill += `<div class="container_Bill_inner-title-food">`
-            contentBill += `<div class="container_Bill_inner-title-food1">Name</div>`
-            contentBill += `<div class="container_Bill_inner-title-food2">Price</div>`
-            contentBill += `<div class="container_Bill_inner-title-food3">Quantity</div>`
+            contentBill += `<div class="container_Bill_inner-title-food1">Tên </div>`
+            contentBill += `<div class="container_Bill_inner-title-food2">Giá</div>`
+            contentBill += `<div class="container_Bill_inner-title-food3">Số lượng</div>`
             contentBill += `</div>`
 
 
@@ -41,20 +41,17 @@ function displayAllBill(value) {
                 contentBill += `<img class="container_Bill_food-img" src="${value[i].food[j].imagePath}">`
                 contentBill += `<div class="container_Bill_food-name">${value[i].food[j].name}</div>`
                 contentBill += `<div class="container_Bill_food-price">${value[i].food[j].price}</div>`
-                contentBill += `<div class="container_Bill_food-price">${value[i].food[j].quantity}</div>`
+                contentBill += `<div class="container_Bill_food-price">${value[i].food[j].quantityBuy}</div>`
                 contentBill += `</div>`
             }
+            contentBill += `<div class="container_Bill_total">Tổng tiền: ${value[i].total}</div>`
+
             contentBill += `</div>`
 
 
-            // contentBill += `<div class="container_Bill_food-quantity" >`
-            // for (let j = 0; j < value[i].bill_food.length; j++) {
-            //     contentBill += `<div class="container_Bill_food-price">${value[i].bill_food[j].quantity}</div>`
-            // }
-            // contentBill += `</div>`
-
-            contentBill += `<div class="container_Bill_btn"><button>Edit-quantity</button>
-                            <button>Pay</button></div>`
+            contentBill += `<div class="container_Bill_btn">
+                            <button class="btn.btn--primary " onclick="deleteBill(${value[i].id})">Xóa</button>
+                            <button class="btn.btn--primary " onclick="payBill(${value[i].id})">Thanh toán</button></div>`
         }
     }
     contentBill += `</div>`
@@ -63,8 +60,6 @@ function displayAllBill(value) {
     document.getElementById("list_food").style.display ="none"
     document.getElementById("bill").style.display ="block"
     document.getElementById("list_category").style.display = "none"
-    document.getElementById("formLogin").style.display ="none"
-    document.getElementById("formRegister").style.display ="none"
     document.getElementById("create_category").style.display = "none"
     document.getElementById("update_category").style.display = "none"
 }
@@ -106,4 +101,36 @@ function getFormDataBill() {
     formBill.append("user", new Blob([JSON.stringify(user)], {type: "application/json"}))
     formBill.append("food1", new Blob([JSON.stringify(food)], {type: "application/json"}))
     return formBill;
+}
+
+
+
+function deleteBill(id) {
+    console.log(id)
+    if (confirm("Are you sure?")) {
+        $.ajax({
+            headers: {
+                'Authorization': 'Bearer ' + sessionStorage.getItem("token"),
+            },
+            url: `http://localhost:8080/api/bills/${id}`,
+            type: "DELETE",
+            success: function (data) {
+                findAllFood()
+            }
+        })
+    }
+}
+
+
+function payBill(id) {
+        $.ajax({
+            headers: {
+                'Authorization': 'Bearer ' + sessionStorage.getItem("token"),
+            },
+            url: `http://localhost:8080/api/bills/pay/${id}`,
+            type: "GET",
+            success: function (data) {
+                findAllFood()
+            }
+        })
 }
