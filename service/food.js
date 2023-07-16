@@ -29,6 +29,64 @@ function changePage(page_number) {
 
 
 
+function sortAllFoodByPriceASC() {
+    $.ajax({
+        headers: {
+            'Authorization': 'Bearer ' + sessionStorage.getItem("token")
+        },
+        url: "http://localhost:8080/api/foods/sort_price_asc",
+        type: "GET",
+        success: function (data){
+            displayAllFood(data.content)
+            displayPageControl("changePageSortASC", data)
+        }
+    })
+}
+//phương thức chuyển trang của page sort
+function changePageSortASC(page_number) {
+    $.ajax({
+        url: `http://localhost:8080/api/foods/sort_price_asc?page=${page_number}`,
+        type: "GET",
+        success: function (data) {
+            displayAllFood(data.content)
+            displayPageControl("changePageSortASC", data)
+        }
+    })
+}
+
+
+
+
+
+function sortAllFoodByPriceDSC() {
+    $.ajax({
+        headers: {
+            'Authorization': 'Bearer ' + sessionStorage.getItem("token")
+        },
+        url: "http://localhost:8080/api/foods/sort_price_dsc",
+        type: "GET",
+        success: function (data){
+            displayAllFood(data.content)
+            displayPageControl("changePageSortDSC", data)
+        }
+    })
+}
+//phương thức chuyển trang của page sort
+function changePageSortDSC(page_number) {
+    $.ajax({
+        url: `http://localhost:8080/api/foods/sort_price_dsc?page=${page_number}`,
+        type: "GET",
+        success: function (data) {
+            displayAllFood(data.content)
+            displayPageControl("changePageSortDSC", data)
+        }
+    })
+}
+
+
+
+
+
 
 // phương thức lay search
 function searchFoodByName(){
@@ -139,7 +197,9 @@ function displayAllFood(value){
         content += `<div class="grid__column-2-4">`
             content += `<div class="home-product-item">`
             // content += `<div class="">${value[i].id}</div>`
-            content +=  `<div class="home-product-item__image"><img  onclick="detailFood(${value[i].id})" class="container_inner-img" src="${value[i].imagePath}" alt="empty"></div>`
+            content +=  `<div class="home-product-item__image"> <a href="#header">
+            <img  onclick="detailFood(${value[i].id})" class="container_inner-img" src="${value[i].imagePath}" alt="empty">
+            </a></div>`
             content +=  `<h3 class="home-product-item__name">${value[i].name}</h3>`
             content +=`<div class="home-product-item__price">`
             // content +=` <span class="home-product-item__price-old">₫ ${value[i].price}</span>`
@@ -470,6 +530,12 @@ function getFormDataUpdate() {
     formData.append("food", new Blob([JSON.stringify(food)], {type: "application/json"}))
     return formData;
 }
+
+
+
+
+
+
 
 
 
